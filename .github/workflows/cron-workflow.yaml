@@ -2,12 +2,13 @@ name: cron workflow
 
 on:
   schedule:
-    - cron: "0/5 * * * *"
-    - cron: "0/20 1 * * *"
+    - cron: "*/5 * * * *"  # Every 5 minutes
+    - cron: "20 1 * * *"   # At 1:20 AM daily
+  workflow_dispatch:        # Allow manual triggering
 
 jobs:
   cron-workflow:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "cron workflow"
-      
+      - name: Print Message
+        run: echo "cron workflow triggered"
